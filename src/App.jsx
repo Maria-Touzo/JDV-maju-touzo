@@ -4,39 +4,36 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  return (
-    <>
-      import { useState } from 'react';
-
-function Square({ value, onSquareClick }) {
-  return (
+  
+    function Square({ value, onSquareClick }) {
+         return (
     <button className="square" onClick={onSquareClick}>
       {value}
     </button>
   );
 }
 
-function Board({ xIsNext, squares, onPlay }) {
-  function handleClick(i) {
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    const nextSquares = squares.slice();
-    if (xIsNext) {
-      nextSquares[i] = 'X';
-    } else {
-      nextSquares[i] = 'O';
-    }
-    onPlay(nextSquares);
-  }
+    function Board({ xIsNext, squares, onPlay }) {
+      function handleClick(i) {
+        if (calculateWinner(squares) || squares[i]) {
+          return;
+        }
+        const nextSquares = squares.slice();
+        if (xIsNext) {
+          nextSquares[i] = 'X';
+        } else {
+          nextSquares[i] = 'O';
+        }
+        onPlay(nextSquares);
+      }
 
-  const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
+        const winner = calculateWinner(squares);
+        let status;
+        if (winner) {
+          status = 'Winner: ' + winner;
+        } else {
+          status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+        }
 
   return (
     <>
@@ -122,8 +119,6 @@ function calculateWinner(squares) {
   return null;
 }
 
-    </>
-  )
 }
 
 export default App
