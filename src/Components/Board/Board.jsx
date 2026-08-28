@@ -1,10 +1,9 @@
 
-// 1. Importação dos componentes e estilos
+
 import Square from '../Square/Square';
 import styles from"./board.module.css";
 
 
-// 2. Componente principal do Tabuleiro
 export default function Board({ xIsNext, squares, onPlay }) {
   // Lógica de clique nos quadrados
   function handleClick(i) {
