@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import Board from './Components/Board/Board';
+import Game from "./Components/Game/Game";
+
+
+
+
 function App() {
 
   return (
-    <>
+    
 
-      <Board/>
-    </>
+      <Game/>
+   
   );
 };
 

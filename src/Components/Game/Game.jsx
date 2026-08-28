@@ -1,5 +1,5 @@
-import Board from './Board.jsx';
-
+import { useState } from 'react';
+import Board from '../Board/Board';
 
 export default function Game() {
  
