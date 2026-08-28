@@ -1,6 +1,7 @@
 
 // 1. Importação dos componentes e estilos
 import Square from '../Square/Square';
+import styles from"./board.module.css";
 
 
 // 2. Componente principal do Tabuleiro

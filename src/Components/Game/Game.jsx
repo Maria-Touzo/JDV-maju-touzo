@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Board from '../Board/Board';
+import styles from "./game.module.css";
 
 export default function Game() {
  

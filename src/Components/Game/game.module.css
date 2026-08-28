@@ -1,0 +1,40 @@
+/* Game.module.css */
+/* Estilo isolado da tela do jogo e painel lateral do histórico */
+
+.game {
+  background-color: var(--bs-body-bg, #ffffff);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Painel de informações e histórico com divisória */
+.game__info {
+  border-left: 2px solid var(--bs-gray-200, #e9ecef);
+  padding-left: 1.5rem;
+}
+
+/* Título da seção do histórico */
+.game__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--bs-gray-800, #343a40);
+  margin-bottom: 1rem;
+}
+
+/* Lista de jogadas */
+.game__history-list {
+  padding-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+/* Responsividade para telas de dispositivos móveis */
+@media (max-width: 767.98px) {
+  .game__info {
+    border-left: none;
+    border-top: 2px solid var(--bs-gray-200, #e9ecef);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
