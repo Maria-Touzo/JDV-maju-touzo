@@ -5,8 +5,8 @@
   font-size: 2rem;
   font-weight: bold;
   color: var(--bs-dark, #212529);
-  background-color: var(--bs-body-bg, #ffffff);
-  border: 2px solid var(--bs-gray-400, #ced4da);
+  background-color: var(--bs-body-bg, #ecc3da);
+  border: 2px solid var(--bs-gray-400, #d898ac);
   border-radius: 8px;
   display: flex;
   align-items: center;

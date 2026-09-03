@@ -2,7 +2,7 @@
 /* Estilo isolado da tela do jogo e painel lateral do histórico */
 
 .game {
-  background-color: var(--bs-body-bg, #ffffff);
+  background-color: var(--bs-body-bg, #c99ab0);
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -10,7 +10,7 @@
 
 /* Painel de informações e histórico com divisória */
 .game__info {
-  border-left: 2px solid var(--bs-gray-200, #e9ecef);
+  border-left: 2px solid var(--bs-gray-200, #2e3c49);
   padding-left: 1.5rem;
 }
 

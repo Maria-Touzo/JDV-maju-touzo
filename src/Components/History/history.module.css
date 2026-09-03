@@ -1,0 +1,16 @@
+/* src/Components/History/Historico.module.css */
+
+/* Bloco principal do painel de histórico com BEM */
+.historico__painel {
+  border-left: 2px solid var(--bs-gray-200, #e9ecef);
+  margin-top: 1rem;
+}
+
+/* Responsividade móvel */
+@media (max-width: 767.98px) {
+  .historico__painel {
+    border-left: none;
+    border-top: 2px solid var(--bs-gray-200, #e9ecef);
+    padding-top: 1rem;
+  }
+}
