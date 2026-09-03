@@ -2,11 +2,12 @@ import { useState } from 'react';
 import styles from './history.module.css';
 
 export default function History({ history }) {
+    // Controla a exibição/visibilidade do painel de histórico (inicia oculto/false)
   const [showHistory, setShowHistory] = useState(false);
-
+    // mapeamos o array do histórico para transformar os dados em elementos visuais
   const gameLog = history.map((squares, move) => {
-    
-    const description = move > 0 ? `Jogada #${move} realizada` : 'Jogo iniciado';
+    // Define a mensagem legível em português com base no número da jogada
+  const description = move > 0 ? `Jogada #${move} realizada` : 'Jogo iniciado';
 
     return (
       <li key={move} className="mb-2">

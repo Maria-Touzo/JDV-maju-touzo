@@ -7,15 +7,22 @@ import styles from"./board.module.css";
 export default function Board({ xIsNext, squares, onPlay }) {
   // Lógica de clique nos quadrados
   function handleClick(i) {
+    // // Se já houver um vencedor ou se o quadrado estiver ocupado, ignora o clique
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+
+    // Cria uma cópia do array do tabuleiro para manter a imutabilidade
     const nextSquares = squares.slice();
+
+    // Marca 'X' ou 'O' dependendo do turno atual
     if (xIsNext) {
       nextSquares[i] = 'X';
     } else {
       nextSquares[i] = 'O';
     }
+
+    // Envia o novo estado do tabuleiro para o componente pai (Game)
     onPlay(nextSquares);
   }
 
@@ -28,7 +35,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
     status = 'Próximo jogador: ' + (xIsNext ? 'X' : 'O');
   }
 
-  // Retorno do elemento visual JSX
+  // Renderiza a estrutura visual do tabuleiro em JSX
   return (
     <>
       <div className={styles['board__status']}>{status}</div>
@@ -51,20 +58,18 @@ export default function Board({ xIsNext, squares, onPlay }) {
       </div>
     </>
   );
-} // <- As chaves do Board fecham AQUI!
+} 
 
-// 3. Função auxiliar declarada FORA do componente Board
+// Função auxiliar que checa as 8 combinações possíveis de vitória
 function calculateWinner(squares) {
+  // Lista com todas as posições vencedoras (linhas, colunas e diagonais)
   const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+   [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontais
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticais
+    [0, 4, 8], [2, 4, 6]             // Diagonais
   ];
+
+  // Percorre a lista de combinações para verificar se alguém venceu
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
