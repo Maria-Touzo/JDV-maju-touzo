@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import Board from '../Board/Board';         
-import History from '../History/History';    
+import History from '../History/History.jsx';    
 import styles from "./game.module.css";       
 
 export default function Game() {
