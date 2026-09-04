@@ -1,44 +1,22 @@
-import { useState } from 'react';
 import styles from './history.module.css';
 
 export default function History({ history }) {
-    // Controla a exibição/visibilidade do painel de histórico (inicia oculto/false)
-  const [showHistory, setShowHistory] = useState(false);
-    // mapeamos o array do histórico para transformar os dados em elementos visuais
-  const gameLog = history.map((squares, move) => {
-    // Define a mensagem legível em português com base no número da jogada
-  const description = move > 0 ? `Jogada #${move} realizada` : 'Jogo iniciado';
-
-    return (
-      <li key={move} className="mb-2">
-        
-        <span className="text-secondary fw-medium">
-          {description}
-        </span>
-      </li>
-    );
-  });
-
   return (
-    <div className="d-flex flex-column align-items-center">
-      {/* Botão de controle com rótulo em português */}
-      <button 
-        type="button"
-        className="btn btn-secondary my-3"
-        onClick={() => setShowHistory(!showHistory)}
-      >
-        {showHistory ? 'Ocultar histórico' : 'Mostrar histórico'}
-      </button>
+    <div className={styles.historyContainer}>
+      <h3 className={styles.title}>Histórico de Jogadas</h3>
+      
+      <ol className={styles.list}>
+        {history.map((_, move) => {
+          const isStart = move === 0;
+          const text = isStart ? 'Início do jogo' : `Jogada #${move}`;
 
-      {/* Renderização condicional do painel com título em português */}
-      {showHistory && (
-        <div className={`p-3 bg-white rounded shadow-sm w-100 ${styles['historico__painel']}`}>
-          <h3 className="h6 fw-bold mb-3 text-secondary border-bottom pb-2">
-            Histórico de Jogadas
-          </h3>
-          <ul className="list-unstyled mb-0">{gameLog}</ul>
-        </div>
-      )}
+          return (
+            <li key={move} className={styles.listItem}>
+              <span className={styles.moveText}>{text}</span>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }

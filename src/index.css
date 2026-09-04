@@ -1,0 +1,19 @@
+/* src/index.css */
+:root {
+  /* Altere apenas essa linha para a cor rosa que você gosta */
+  --cor-fundo-tabuleiro: #fce4ec; /* Um tom de rosa claro */
+  
+  /* Mantenha as outras variáveis que você já tem */
+  --cor-borda-tabuleiro: #eea9d9;
+  --cor-quadrado-bg: #ffffff;
+  --cor-quadrado-hover: #fcefe1; /* Ex: Rosa mais clarinho para o hover */
+  --cor-texto-principal: #000000;
+  --cor-jogador-x: #000000;
+  --cor-jogador-o: #d81b2e;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f7f3f3; /* Fundo da página branco */
+}

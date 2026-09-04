@@ -1,40 +1,107 @@
-/* Game.module.css */
-/* Estilo isolado da tela do jogo e painel lateral do histórico */
-
-.game {
-  background-color: var(--bs-body-bg, #c99ab0);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Painel de informações e histórico com divisória */
-.game__info {
-  border-left: 2px solid var(--bs-gray-200, #2e3c49);
-  padding-left: 1.5rem;
+/* Placar */
+.scoreBoard {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
-/* Título da seção do histórico */
-.game__title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--bs-gray-800, #343a40);
-  margin-bottom: 1rem;
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--cor-fundo-tabuleiro);
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  min-width: 100px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Lista de jogadas */
-.game__history-list {
-  padding-left: 1.25rem;
-  margin-bottom: 0;
+.scoreLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-texto-principal);
 }
 
-/* Responsividade para telas de dispositivos móveis */
-@media (max-width: 767.98px) {
-  .game__info {
-    border-left: none;
-    border-top: 2px solid var(--bs-gray-200, #e9ecef);
-    padding-left: 0;
-    padding-top: 1.5rem;
-    margin-top: 1.5rem;
+.scoreValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--cor-texto-principal);
+}
+
+.scoreX .scoreValue { color: var(--cor-jogador-x); }
+.scoreO .scoreValue { color: var(--cor-jogador-o); }
+
+/* Área onde o Tabuleiro e o Histórico ficam lado a lado */
+.gameContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.boardSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.historySection {
+  width: 280px; /* Largura fixa e controlada para o histórico */
+  flex-shrink: 0;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.resetBtn, .resetScoreBtn {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.resetBtn {
+  background-color: var(--cor-jogador-o);
+  color: #ffffff;
+}
+
+.resetScoreBtn {
+  background-color: var(--cor-borda-tabuleiro);
+  color: var(--cor-texto-principal);
+}
+
+.resetBtn:hover, .resetScoreBtn:hover {
+  opacity: 0.85;
+}
+
+/* Para telas menores (celulares), coloca um embaixo do outro */
+@media (max-width: 650px) {
+  .gameContent {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .historySection {
+    width: 100%;
+    max-width: 320px;
   }
 }

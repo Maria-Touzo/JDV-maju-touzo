@@ -1,63 +1,84 @@
-
 import { useState } from 'react';
 import Board from '../Board/Board';         
 import History from '../History/History.jsx';    
 import styles from "./game.module.css";       
 
 export default function Game() {
-  //  Armazena o histórico do jogo como um array de matrizes de 9 posições
   const [history, setHistory] = useState([Array(9).fill(null)]);
-  // Controla o índice numérico da jogada que está sendo visualizada
   const [currentMove, setCurrentMove] = useState(0);
+  const [scores, setScores] = useState({ x: 0, o: 0, ties: 0 });
 
-  // Define se é a vez do jogador 'X' (jogadas pares são do 'X')
   const xIsNext = currentMove % 2 === 0;
-  // Resgata a matriz de 9 posições correspondente ao movimento atual
   const currentSquares = history[currentMove];
 
-//  // Callback chamado pelo Board quando uma nova jogada é realizada
   function handlePlay(nextSquares) {
-    // Cria um novo histórico mantendo até a jogada atual e adicionando o novo estado do tabuleiro
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
-    // Atualiza o estado do histórico com a nova lista
     setHistory(nextHistory);
-    // Atualiza o índice para apontar sempre para a última jogada feita
     setCurrentMove(nextHistory.length - 1);
   }
 
- // Função responsável por reiniciar a partida e resetar os estados
+  function handleGameEnd(winner) {
+    if (winner === 'X') {
+      setScores(prev => ({ ...prev, x: prev.x + 1 }));
+    } else if (winner === 'O') {
+      setScores(prev => ({ ...prev, o: prev.o + 1 }));
+    } else if (winner === 'tie') {
+      setScores(prev => ({ ...prev, ties: prev.ties + 1 }));
+    }
+  }
+
   function handleReset() {
-    // Redefine o histórico para apenas uma matriz de 9 posições nulas
     setHistory([Array(9).fill(null)]); 
-    // Zera o ponteiro do movimento para o início do jogo
     setCurrentMove(0);                 
   }
 
-  
+  function handleResetScore() {
+    setScores({ x: 0, o: 0, ties: 0 });
+    handleReset();
+  }
+
   return (
-    <div className={`container my-4 ${styles['game']}`}>
-      <div className="row justify-content-center">
-        
-       
-        <div className="col-12 col-md-6 d-flex flex-column align-items-center mb-4 mb-md-0">
-          <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+    <div className={styles.container}>
+      {/* Placar Superior */}
+      <div className={styles.scoreBoard}>
+        <div className={`${styles.scoreCard} ${styles.scoreX}`}>
+          <span className={styles.scoreLabel}>Jogador X</span>
+          <span className={styles.scoreValue}>{scores.x}</span>
+        </div>
+        <div className={`${styles.scoreCard} ${styles.scoreTie}`}>
+          <span className={styles.scoreLabel}>Empates</span>
+          <span className={styles.scoreValue}>{scores.ties}</span>
+        </div>
+        <div className={`${styles.scoreCard} ${styles.scoreO}`}>
+          <span className={styles.scoreLabel}>Jogador O</span>
+          <span className={styles.scoreValue}>{scores.o}</span>
+        </div>
+      </div>
+
+      {/* Área Principal do Jogo */}
+      <div className={styles.gameContent}>
+        <div className={styles.boardSection}>
+          <Board 
+            xIsNext={xIsNext} 
+            squares={currentSquares} 
+            onPlay={handlePlay} 
+            onGameEnd={handleGameEnd}
+          />
           
-          
-          <button 
-            type="button" 
-            className="btn btn-danger mt-3" 
-            onClick={handleReset}
-          >
-            Reiniciar Jogo
-          </button>
+          <div className={styles.buttonGroup}>
+            <button type="button" className={styles.resetBtn} onClick={handleReset}>
+              Reiniciar Partida
+            </button>
+            <button type="button" className={styles.resetScoreBtn} onClick={handleResetScore}>
+              Zerar Placar
+            </button>
+          </div>
         </div>
 
-       
-        <div className="col-12 col-md-4">
+        <div className={styles.historySection}>
           <History history={history} />
         </div>
-
       </div>
     </div>
   );
-} 
+}

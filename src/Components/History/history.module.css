@@ -1,16 +1,54 @@
-/* src/Components/History/Historico.module.css */
-
-/* Bloco principal do painel de histórico com BEM */
-.historico__painel {
-  border-left: 2px solid var(--bs-gray-200, #e9ecef);
-  margin-top: 1rem;
+.historyContainer {
+  background-color: var(--cor-fundo-tabuleiro);
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--cor-borda-tabuleiro);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Responsividade móvel */
-@media (max-width: 767.98px) {
-  .historico__painel {
-    border-left: none;
-    border-top: 2px solid var(--bs-gray-200, #e9ecef);
-    padding-top: 1rem;
-  }
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+}
+
+.moveTag {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--cor-quadrado-bg);
+  border: 1px solid var(--cor-borda-tabuleiro);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cor-texto-principal);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.moveTag::before {
+  content: "•";
+  color: var(--cor-jogador-x);
+  font-size: 1.2rem;
 }

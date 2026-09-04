@@ -1,20 +1,36 @@
 
 .square {
+  background-color: var(--cor-quadrado-bg);
+  border: 2px solid var(--cor-borda-tabuleiro);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--cor-texto-principal);
+  cursor: pointer;
   width: 80px;
   height: 80px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--bs-dark, #212529);
-  background-color: var(--bs-body-bg, #ecc3da);
-  border: 2px solid var(--bs-gray-400, #d898ac);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  padding: 0;
-  outline: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
+.square:hover {
+  background-color: var(--cor-quadrado-hover);
+}
 
+.isX {
+  color: var(--cor-jogador-x);
+}
+
+.isO {
+  color: var(--cor-jogador-o);
+}
+
+/* --- CLASSE DE DESTAQUE PARA OS VENCEDORES --- */
+.winningSquare {
+  background-color: #d1e7dd !important; /* Verde suave para o fundo */
+  border-color: #ac77a3 !important;     /* Borda verde mais forte */
+  transform: scale(1.08);                /* Dá um leve zoom nas casinhas vencedoras */
+  box-shadow: 0 0 10px rgba(145, 185, 166, 0.4);
+}
